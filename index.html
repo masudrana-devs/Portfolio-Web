@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font:
+          14px -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: #fff;
+        color: #000;
+      }
+      img {
+        max-width: 100%;
+      }
+      [hidden]:not([hidden="until-found" i]) {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <title>Masud Rana Portfolio</title>
+    <meta name="claude:viewport-fit-sides" content="cover" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "var(--bg)",
+              surface: "var(--surface)",
+              fg: "var(--fg)",
+              muted: "var(--muted)",
+              line: "var(--line)",
+              accent: "var(--accent)",
+              "accent-fg": "var(--accent-fg)",
+            },
+            fontFamily: {
+              display: [
+                '"Bricolage Grotesque"',
+                "ui-sans-serif",
+                "system-ui",
+                "sans-serif",
+              ],
+              sans: [
+                '"IBM Plex Sans"',
+                "ui-sans-serif",
+                "system-ui",
+                "sans-serif",
+              ],
+              mono: [
+                '"IBM Plex Mono"',
+                "ui-monospace",
+                "SFMono-Regular",
+                "Menlo",
+                "monospace",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Layout: single left-aligned column with a ruled, spreadsheet-like grid for skills and work. */
+      :root {
+        --bg: #f5f7fa;
+        --surface: #ffffff;
+        --fg: #14181f;
+        --muted: #5b6573;
+        --line: #d8dee7;
+        --accent: #2447e0;
+        --accent-fg: #ffffff;
+        --code-tag: #2447e0;
+        --code-attr: #0b7a5b;
+        --code-str: #b45309;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0f1319;
+          --surface: #161c25;
+          --fg: #e8ecf2;
+          --muted: #97a2b3;
+          --line: #28313e;
+          --accent: #8aa2ff;
+          --accent-fg: #0f1319;
+          --code-tag: #8aa2ff;
+          --code-attr: #5fd3a8;
+          --code-str: #f0b15b;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #0f1319;
+        --surface: #161c25;
+        --fg: #e8ecf2;
+        --muted: #97a2b3;
+        --line: #28313e;
+        --accent: #8aa2ff;
+        --accent-fg: #0f1319;
+        --code-tag: #8aa2ff;
+        --code-attr: #5fd3a8;
+        --code-str: #f0b15b;
+        color-scheme: dark;
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+        padding-block: 24px 48px;
+      }
+      h1,
+      h2,
+      h3 {
+        text-wrap: balance;
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+      .label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .t-tag {
+        color: var(--code-tag);
+      }
+      .t-attr {
+        color: var(--code-attr);
+      }
+      .t-str {
+        color: var(--code-str);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+
+    <div class="mx-auto w-full max-w-5xl">
+      <header
+        class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-line pb-4"
+      >
+        <a href="#top" class="font-mono text-sm font-medium tracking-tight"
+          >masud<span class="text-accent">.rana</span></a
+        >
+        <nav
+          class="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted"
+          aria-label="Sections"
+        >
+          <a class="hover:text-fg" href="#about">About</a>
+          <a class="hover:text-fg" href="#skills">Skills</a>
+          <a class="hover:text-fg" href="#work">Work</a>
+          <a class="hover:text-fg" href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <!-- Hero -->
+        <section
+          class="grid gap-10 py-14 md:grid-cols-[1.15fr_1fr] md:items-center md:py-20"
+        >
+          <div class="min-w-0">
+            <p class="label">Senior Software Engineer · 7 years</p>
+            <h1
+              class="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
+            >
+              Masud Rana builds fast web apps that stay simple to maintain.
+            </h1>
+            <p class="mt-6 max-w-[60ch] text-lg text-muted">
+              I work with Python, HTMX, HTML and CSS to ship server-rendered
+              products, and with Excel when the data lives in spreadsheets.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#work"
+                class="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-accent-fg hover:opacity-90"
+                >See my work</a
+              >
+              <a
+                href="#contact"
+                class="rounded-md border border-line bg-surface px-5 py-2.5 text-sm font-medium hover:border-accent"
+                >Get in touch</a
+              >
+            </div>
+          </div>
+
+          <div class="min-w-0 rounded-md border border-line bg-surface">
+            <div
+              class="flex items-center justify-between border-b border-line px-4 py-2"
+            >
+              <span class="label">projects.html</span>
+              <span class="label">htmx</span>
+            </div>
+            <pre
+              class="overflow-x-auto p-4 font-mono text-[13px] leading-6"
+            ><code><span class="t-tag">&lt;button</span>
+  <span class="t-attr">hx-get</span>=<span class="t-str">"/projects?stack=python"</span>
+  <span class="t-attr">hx-target</span>=<span class="t-str">"#project-list"</span>
+  <span class="t-attr">hx-swap</span>=<span class="t-str">"innerHTML"</span><span class="t-tag">&gt;</span>
+  Show Python projects
+<span class="t-tag">&lt;/button&gt;</span>
+
+<span class="t-tag">&lt;ul</span> <span class="t-attr">id</span>=<span class="t-str">"project-list"</span><span class="t-tag">&gt;</span>
+  <span class="text-muted">&lt;!-- swapped in by the server --&gt;</span>
+<span class="t-tag">&lt;/ul&gt;</span></code></pre>
+          </div>
+        </section>
+
+        <!-- About -->
+        <section
+          id="about"
+          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
+        >
+          <h2 class="label pt-1">About</h2>
+          <div class="min-w-0 max-w-[65ch] space-y-4">
+            <p>
+              I am a senior software engineer with seven years of hands-on
+              experience. I like tools that are easy to read six months later:
+              plain HTML, a small amount of CSS, and Python on the server doing
+              the real work.
+            </p>
+            <p>
+              HTMX lets me add interactivity without a heavy front-end build,
+              and Tailwind keeps styling close to the markup. When a team still
+              runs on Excel, I build around it instead of fighting it.
+            </p>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section
+          id="skills"
+          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
+        >
+          <h2 class="label pt-1">Skills</h2>
+          <div class="min-w-0 overflow-x-auto">
+            <table class="w-full min-w-[480px] border-collapse text-left">
+              <thead>
+                <tr class="border-b border-line">
+                  <th class="label py-2 pr-4 font-normal">Tool</th>
+                  <th class="label py-2 font-normal">What I use it for</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-line">
+                <tr>
+                  <td class="py-3 pr-4 font-mono text-sm font-medium">
+                    Python
+                  </td>
+                  <td class="py-3 text-muted">
+                    Backends, automation, data processing
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4 font-mono text-sm font-medium">HTMX</td>
+                  <td class="py-3 text-muted">
+                    Partial page updates and forms without a SPA
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4 font-mono text-sm font-medium">HTML</td>
+                  <td class="py-3 text-muted">
+                    Semantic, accessible page structure
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4 font-mono text-sm font-medium">
+                    CSS / Tailwind
+                  </td>
+                  <td class="py-3 text-muted">
+                    Responsive layouts and design systems
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-3 pr-4 font-mono text-sm font-medium">Excel</td>
+                  <td class="py-3 text-muted">
+                    Reports, formulas, and import/export workflows
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Work: replace these sample entries with real projects -->
+        <section
+          id="work"
+          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
+        >
+          <h2 class="label pt-1">Selected work</h2>
+          <div class="min-w-0">
+            <p class="mb-5 font-mono text-xs text-muted">
+              Sample entries. Replace them with your own projects.
+            </p>
+            <ul class="grid gap-4 sm:grid-cols-2">
+              <li
+                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
+              >
+                <h3 class="font-display text-xl font-bold tracking-tight">
+                  Inventory Dashboard
+                </h3>
+                <p class="text-muted">
+                  Server-rendered stock tracking with live table filters, built
+                  with Python and HTMX.
+                </p>
+                <p class="mt-auto font-mono text-xs text-muted">
+                  Python · HTMX · Tailwind
+                </p>
+              </li>
+              <li
+                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
+              >
+                <h3 class="font-display text-xl font-bold tracking-tight">
+                  Excel Report Automation
+                </h3>
+                <p class="text-muted">
+                  Turns weekly spreadsheets into formatted reports and sends
+                  them on a schedule.
+                </p>
+                <p class="mt-auto font-mono text-xs text-muted">
+                  Python · Excel
+                </p>
+              </li>
+              <li
+                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
+              >
+                <h3 class="font-display text-xl font-bold tracking-tight">
+                  Booking Form
+                </h3>
+                <p class="text-muted">
+                  Inline validation and instant confirmation using HTMX swaps,
+                  no page reloads.
+                </p>
+                <p class="mt-auto font-mono text-xs text-muted">
+                  HTMX · HTML · CSS
+                </p>
+              </li>
+              <li
+                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
+              >
+                <h3 class="font-display text-xl font-bold tracking-tight">
+                  Component Library
+                </h3>
+                <p class="text-muted">
+                  A small set of reusable Tailwind components shared across
+                  internal tools.
+                </p>
+                <p class="mt-auto font-mono text-xs text-muted">
+                  Tailwind · HTML
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section
+          id="contact"
+          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
+        >
+          <h2 class="label pt-1">Contact</h2>
+          <div class="min-w-0 max-w-[65ch]">
+            <p class="text-lg">
+              Have a project or a role in mind? Send me a message.
+            </p>
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+              <span
+                id="email"
+                class="rounded-md border border-line bg-surface px-4 py-2.5 font-mono text-sm"
+                >your-email@example.com</span
+              >
+              <button
+                id="copy-email"
+                type="button"
+                class="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-accent-fg hover:opacity-90"
+              >
+                Copy email
+              </button>
+              <span
+                id="copy-status"
+                class="text-sm text-muted"
+                role="status"
+              ></span>
+            </div>
+            <p class="mt-3 font-mono text-xs text-muted">
+              Replace the address above with your own.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-line pt-6 text-sm text-muted">
+        © 2026 Masud Rana
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var btn = document.getElementById("copy-email");
+        var email = document.getElementById("email");
+        var status = document.getElementById("copy-status");
+        btn.addEventListener("click", function () {
+          var text = email.textContent;
+          function selectText() {
+            var range = document.createRange();
+            range.selectNodeContents(email);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            status.textContent = "Press Ctrl+C to copy";
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+              status.textContent = "Copied";
+            }, selectText);
+          } else {
+            selectText();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
