@@ -1,77 +1,211 @@
-[masud.rana](#top)
+[Skip to content](#main)
 
-[About](#about) [Skills](#skills) [Work](#work) [Contact](#contact)
+[MR Masud Rana](#home)
 
-Senior Software Engineer · 7 years
+[Home](#home) [About](#about) [Skills](#skills) [Experience](#experience) [Projects](#projects) [Contact](#contact)
 
-# Masud Rana builds fast web apps that stay simple to maintain.
+[Home](#home) [About](#about) [Skills](#skills) [Experience](#experience) [Projects](#projects) [Contact](#contact)
 
-I work with Python, HTMX, HTML and CSS to ship server-rendered products, and with Excel when the data lives in spreadsheets.
+B2 fx =Engineer(years: 7, stack: "Python, HTMX, Excel")
 
-[See my work](#work) [Get in touch](#contact)
+Hi, I'm Masud Rana
 
-projects.html htmx
+# Senior Software Engineer
 
-```
-<button
-  hx-get="/projects?stack=python"
-  hx-target="#project-list"
-  hx-swap="innerHTML">
-  Show Python projects
-</button>
+I bring 7+ years of software development experience to every project, building efficient, practical software from backend automation to fast, clean web interfaces. My everyday toolkit is Python, HTML, CSS, HTMX, and Excel.
 
-<ul id="project-list">
-  <!-- swapped in by the server -->
-</ul>
-```
+[View My Projects](#projects) [Contact Me](#contact)
 
-## About
+- Python
+- HTML5
+- CSS3
+- Tailwind CSS
+- HTMX
+- Excel
 
-I am a senior software engineer with seven years of hands-on experience. I like tools that are easy to read six months later: plain HTML, a small amount of CSS, and Python on the server doing the real work.
+Portrait placeholder for Masud Rana
 
-HTMX lets me add interactivity without a heavy front-end build, and Tailwind keeps styling close to the markup. When a team still runs on Excel, I build around it instead of fighting it.
+\<button
 
-## Skills
+hx-get="/projects"
 
-| Tool | What I use it for |
-| --- | --- |
-| Python | Backends, automation, data processing |
-| HTMX | Partial page updates and forms without a SPA |
-| HTML | Semantic, accessible page structure |
-| CSS / Tailwind | Responsive layouts and design systems |
-| Excel | Reports, formulas, and import/export workflows |
+hx-target="#work">
 
-## Selected work
+7+
 
-Sample entries. Replace them with your own projects.
+Years
 
-- ### Inventory Dashboard
+About
 
-  Server-rendered stock tracking with live table filters, built with Python and HTMX.
+## Software that is practical, fast, and built to last.
 
-  Python · HTMX · Tailwind
-- ### Excel Report Automation
+I'm Masud Rana, a Senior Software Engineer with more than seven years of experience turning everyday problems into dependable software. I enjoy work that makes people's days easier: automating repetitive tasks, connecting data, and shipping web interfaces that feel quick and clear.
 
-  Turns weekly spreadsheets into formatted reports and sends them on a schedule.
+My work spans web technologies and automation, with a steady focus on clean, maintainable code that scales as requirements change. I reach for simple, well-understood tools first: Python on the backend, semantic HTML and Tailwind CSS on the front, HTMX for interactivity, and Excel where it is the right tool for the data.
 
-  Python · Excel
-- ### Booking Form
+- Software Development
+- Web Development
+- Frontend
+- Backend
+- Automation
 
-  Inline validation and instant confirmation using HTMX swaps, no page reloads.
+### Efficient by default
 
-  HTMX · HTML · CSS
-- ### Component Library
+Practical solutions that do the job with the fewest moving parts.
 
-  A small set of reusable Tailwind components shared across internal tools.
+### Web and automation
 
-  Tailwind · HTML
+From interfaces people use to scripts they never have to think about.
 
-## Contact
+### Clean, maintainable code
 
-Have a project or a role in mind? Send me a message.
+Readable structure and clear naming so teammates can move fast.
 
-your-email@example.com
+### Built to scale
 
-Replace the address above with your own.
+Designs that stay simple as features, data, and teams grow.
 
-© 2026 Masud Rana
+Skills
+
+## The toolkit I use every day.
+
+A focused stack, chosen for clarity, speed, and long-term maintainability.
+
+### Programming
+
+Python
+
+Backend services, scripting, and automation.
+
+### Frontend
+
+HTML5
+
+Semantic, accessible structure.
+
+CSS3
+
+Responsive layouts and modern styling.
+
+Tailwind CSS
+
+Utility-first, consistent design systems.
+
+### Dynamic Web Development
+
+HTMX
+
+Server-driven interactivity with minimal JavaScript: partial page updates, forms, and live components written as plain HTML attributes.
+
+### Productivity & Data
+
+Microsoft Excel
+
+Data analysis, reporting, and workflow automation.
+
+Experience
+
+## Seven years of shipping software.
+
+7+
+
+years of professional experience in software development and problem solving.
+
+1. ### Senior Software Engineer
+
+   \[Start year\] to Present
+
+   \[Company name\]
+   - Delivering software across web development, backend systems, and automation, with 7+ years of professional experience.
+   - Solving practical problems with clean, maintainable, scalable code.
+   - \[Add a key responsibility or measurable achievement\]
+
+2. ### \[Previous role title\]
+
+   \[Start year\] to \[End year\]
+
+   \[Company name\]
+   - \[Describe what you built or improved\]
+   - \[Add technologies used and the outcome\]
+
+Projects
+
+## Featured work.
+
+Placeholder projects, ready to be replaced with real ones. Each card's "Project details" button loads its content with HTMX.
+
+### Workflow Automation Toolkit
+
+Placeholder
+
+A short description of what this project does and the problem it solves. Replace with your own project summary.
+
+- Python
+- Excel
+
+[Live Demo](#) [Source Code](#)
+
+### Interactive Web Dashboard
+
+Placeholder
+
+A short description of what this project does and the problem it solves. Replace with your own project summary.
+
+- HTMX
+- Tailwind CSS
+- Python
+
+[Live Demo](#) [Source Code](#)
+
+### Data Reporting Pipeline
+
+Placeholder
+
+A short description of what this project does and the problem it solves. Replace with your own project summary.
+
+- Python
+- Excel
+
+[Live Demo](#) [Source Code](#)
+
+Contact
+
+## Let's build something useful together.
+
+Have a project, an automation idea, or a role in mind? Send a message and I'll get back to you.
+
+- Email
+
+  your.name@example.com
+
+- [LinkedIn linkedin.com/in/your-handle](https://www.linkedin.com/)
+- [GitHub github.com/your-handle](https://github.com/)
+
+Name
+
+Email
+
+Subject
+
+Message
+
+[MR Masud Rana](#home)
+
+Senior Software Engineer with 7+ years of experience in web development and automation.
+
+## Quick links
+
+- [Home](#home)
+- [About](#about)
+- [Skills](#skills)
+- [Experience](#experience)
+- [Projects](#projects)
+- [Contact](#contact)
+
+## Elsewhere
+
+- [GitHub](https://github.com/)
+- [LinkedIn](https://www.linkedin.com/)
+- [Email](#contact)
+
+© 2026 Masud Rana. All rights reserved.

@@ -37,42 +37,74 @@
   <body>
     <title>Masud Rana Portfolio</title>
     <meta name="claude:viewport-fit-sides" content="cover" />
+    <!-- SEO: for the live site, a longer title such as "Masud Rana | Senior Software Engineer" works well in <title>. -->
+    <meta
+      name="description"
+      content="Masud Rana is a Senior Software Engineer with 7+ years of experience in Python, HTML, CSS, Tailwind CSS, HTMX and Excel. Software development, web development and automation."
+    />
+    <meta name="author" content="Masud Rana" />
+    <meta name="theme-color" content="#0A1224" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Masud Rana | Senior Software Engineer" />
+    <meta
+      property="og:description"
+      content="7+ years building efficient, practical software with Python, HTMX, Tailwind CSS and Excel."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="htmx-config"
+      content='{"includeIndicatorStyles":false,"reportValidityOfForms":true}'
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Masud Rana",
+        "jobTitle": "Senior Software Engineer",
+        "knowsAbout": [
+          "Python",
+          "HTML",
+          "CSS",
+          "Tailwind CSS",
+          "HTMX",
+          "Microsoft Excel",
+          "Automation"
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap"
     />
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+
     <script>
+      /* Tailwind theme: every color reads a CSS token, so light and dark share one set of utilities. */
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              bg: "var(--bg)",
-              surface: "var(--surface)",
-              fg: "var(--fg)",
-              muted: "var(--muted)",
-              line: "var(--line)",
-              accent: "var(--accent)",
-              "accent-fg": "var(--accent-fg)",
+              bg: "rgb(var(--bg) / <alpha-value>)",
+              surface: "rgb(var(--surface) / <alpha-value>)",
+              surface2: "rgb(var(--surface2) / <alpha-value>)",
+              ink: "rgb(var(--ink) / <alpha-value>)",
+              muted: "rgb(var(--muted) / <alpha-value>)",
+              line: "rgb(var(--line) / <alpha-value>)",
+              primary: "rgb(var(--primary) / <alpha-value>)",
+              onprimary: "rgb(var(--on-primary) / <alpha-value>)",
+              accent: "rgb(var(--accent) / <alpha-value>)",
             },
             fontFamily: {
-              display: [
-                '"Bricolage Grotesque"',
-                "ui-sans-serif",
-                "system-ui",
-                "sans-serif",
-              ],
-              sans: [
-                '"IBM Plex Sans"',
-                "ui-sans-serif",
-                "system-ui",
-                "sans-serif",
-              ],
+              display: ["Manrope", "ui-sans-serif", "system-ui", "sans-serif"],
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
               mono: [
-                '"IBM Plex Mono"',
+                '"JetBrains Mono"',
                 "ui-monospace",
                 "SFMono-Regular",
-                "Menlo",
                 "monospace",
               ],
             },
@@ -80,370 +112,1935 @@
         },
       };
     </script>
+
     <style>
-      /* Layout: single left-aligned column with a ruled, spreadsheet-like grid for skills and work. */
+      /* Layout concept: a calm, spreadsheet-ruled page. One bold moment (the formula bar in the hero), quiet everywhere else. */
       :root {
-        --bg: #f5f7fa;
-        --surface: #ffffff;
-        --fg: #14181f;
-        --muted: #5b6573;
-        --line: #d8dee7;
-        --accent: #2447e0;
-        --accent-fg: #ffffff;
-        --code-tag: #2447e0;
-        --code-attr: #0b7a5b;
-        --code-str: #b45309;
+        --bg: 247 249 252;
+        --surface: 255 255 255;
+        --surface2: 238 242 248;
+        --ink: 15 27 51;
+        --muted: 80 96 124;
+        --line: 217 224 236;
+        --primary: 57 73 214;
+        --on-primary: 255 255 255;
+        --accent: 14 116 144;
       }
       @media (prefers-color-scheme: dark) {
         :root:not([data-theme="light"]) {
-          --bg: #0f1319;
-          --surface: #161c25;
-          --fg: #e8ecf2;
-          --muted: #97a2b3;
-          --line: #28313e;
-          --accent: #8aa2ff;
-          --accent-fg: #0f1319;
-          --code-tag: #8aa2ff;
-          --code-attr: #5fd3a8;
-          --code-str: #f0b15b;
+          --bg: 8 15 32;
+          --surface: 15 25 48;
+          --surface2: 21 34 62;
+          --ink: 230 236 248;
+          --muted: 148 163 190;
+          --line: 36 50 82;
+          --primary: 129 146 255;
+          --on-primary: 8 15 32;
+          --accent: 56 207 230;
           color-scheme: dark;
         }
       }
       :root[data-theme="dark"] {
-        --bg: #0f1319;
-        --surface: #161c25;
-        --fg: #e8ecf2;
-        --muted: #97a2b3;
-        --line: #28313e;
-        --accent: #8aa2ff;
-        --accent-fg: #0f1319;
-        --code-tag: #8aa2ff;
-        --code-attr: #5fd3a8;
-        --code-str: #f0b15b;
+        --bg: 8 15 32;
+        --surface: 15 25 48;
+        --surface2: 21 34 62;
+        --ink: 230 236 248;
+        --muted: 148 163 190;
+        --line: 36 50 82;
+        --primary: 129 146 255;
+        --on-primary: 8 15 32;
+        --accent: 56 207 230;
         color-scheme: dark;
       }
+
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        background: var(--bg);
-        color: var(--fg);
-        font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+        margin: 0;
+        background: rgb(var(--bg));
+        color: rgb(var(--ink));
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
         font-size: 16px;
-        line-height: 1.6;
-        padding-left: max(16px, env(safe-area-inset-left, 0px));
-        padding-right: max(16px, env(safe-area-inset-right, 0px));
-        padding-block: 24px 48px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      /* Paints the phone status-bar strip above the sticky header. */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0 0 auto;
+        height: env(safe-area-inset-top, 0px);
+        z-index: 60;
+        background: rgb(var(--bg));
+      }
+      section[id] {
+        scroll-margin-top: 5rem;
       }
       h1,
       h2,
       h3 {
         text-wrap: balance;
       }
-      a:focus-visible,
-      button:focus-visible {
-        outline: 2px solid var(--accent);
+
+      .wrap {
+        width: 100%;
+        max-width: 76rem;
+        margin-inline: auto;
+        padding-left: max(1rem, env(safe-area-inset-left, 0px));
+        padding-right: max(1rem, env(safe-area-inset-right, 0px));
+      }
+      :focus-visible {
+        outline: 2px solid rgb(var(--primary));
         outline-offset: 3px;
+        border-radius: 6px;
       }
-      .label {
-        font-family: "IBM Plex Mono", ui-monospace, monospace;
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted);
+
+      /* Spreadsheet-style ruled background for the hero */
+      .grid-bg {
+        background-image:
+          linear-gradient(rgb(var(--line) / 0.7) 1px, transparent 1px),
+          linear-gradient(90deg, rgb(var(--line) / 0.7) 1px, transparent 1px);
+        background-size: 44px 44px;
+        -webkit-mask-image: radial-gradient(
+          ellipse 80% 70% at 75% 35%,
+          #000 25%,
+          transparent 75%
+        );
+        mask-image: radial-gradient(
+          ellipse 80% 70% at 75% 35%,
+          #000 25%,
+          transparent 75%
+        );
       }
-      .t-tag {
-        color: var(--code-tag);
+
+      .nav-link {
+        color: rgb(var(--muted));
+        transition:
+          color 0.2s,
+          background-color 0.2s;
       }
-      .t-attr {
-        color: var(--code-attr);
+      .nav-link:hover {
+        color: rgb(var(--ink));
+        background: rgb(var(--surface2));
       }
-      .t-str {
-        color: var(--code-str);
+      .nav-link[aria-current="true"] {
+        color: rgb(var(--primary));
+        background: rgb(var(--primary) / 0.1);
+      }
+
+      /* Editable placeholders: replace the text, then delete the class */
+      .ph {
+        border: 1px dashed rgb(var(--accent) / 0.65);
+        border-radius: 4px;
+        padding: 0 0.35rem;
+        color: rgb(var(--accent));
+        background: rgb(var(--accent) / 0.08);
+        white-space: normal;
+      }
+
+      .card {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: rgb(var(--primary) / 0.45);
+        box-shadow: 0 14px 34px -14px rgb(var(--primary) / 0.35);
+      }
+
+      /* Illustration fills read the theme tokens */
+      .f-surface {
+        fill: rgb(var(--surface));
+      }
+      .f-surface2 {
+        fill: rgb(var(--surface2));
+      }
+      .f-line {
+        fill: rgb(var(--line));
+      }
+      .f-primary {
+        fill: rgb(var(--primary));
+      }
+      .f-accent {
+        fill: rgb(var(--accent));
+      }
+      .f-muted {
+        fill: rgb(var(--muted) / 0.55);
+      }
+      .s-line {
+        stroke: rgb(var(--line));
+      }
+
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      .bob {
+        animation: bob 6s ease-in-out infinite;
+      }
+      .bob-slow {
+        animation: bob 8s ease-in-out -2s infinite;
+      }
+      @keyframes rise {
+        from {
+          transform: translateY(14px);
+        }
+        to {
+          transform: none;
+        }
+      }
+      .rise {
+        animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
       }
       @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
+        html {
+          scroll-behavior: auto;
+        }
+        .bob,
+        .bob-slow,
+        .rise {
+          animation: none;
+        }
+        .card,
+        .card:hover {
+          transition: none;
+          transform: none;
         }
       }
     </style>
 
-    <div class="mx-auto w-full max-w-5xl">
-      <header
-        class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-line pb-4"
-      >
-        <a href="#top" class="font-mono text-sm font-medium tracking-tight"
-          >masud<span class="text-accent">.rana</span></a
-        >
-        <nav
-          class="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted"
-          aria-label="Sections"
-        >
-          <a class="hover:text-fg" href="#about">About</a>
-          <a class="hover:text-fg" href="#skills">Skills</a>
-          <a class="hover:text-fg" href="#work">Work</a>
-          <a class="hover:text-fg" href="#contact">Contact</a>
-        </nav>
-      </header>
+    <!-- Accessibility: skip link -->
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-onprimary"
+      >Skip to content</a
+    >
 
-      <main id="top">
-        <!-- Hero -->
-        <section
-          class="grid gap-10 py-14 md:grid-cols-[1.15fr_1fr] md:items-center md:py-20"
+    <!-- ============ A. NAVIGATION (sticky, blurred) ============ -->
+    <header
+      class="sticky z-50 border-b border-line/70 bg-bg/80 backdrop-blur-md"
+      style="top: env(safe-area-inset-top, 0px)"
+    >
+      <div class="wrap flex h-16 items-center justify-between gap-4">
+        <a
+          href="#home"
+          class="flex items-center gap-2.5 font-display text-lg font-extrabold tracking-tight"
+          aria-label="Masud Rana, home"
         >
-          <div class="min-w-0">
-            <p class="label">Senior Software Engineer · 7 years</p>
-            <h1
-              class="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
+          <span
+            class="grid h-8 w-8 place-items-center rounded-md bg-primary font-mono text-xs font-medium text-onprimary"
+            aria-hidden="true"
+            >MR</span
+          >
+          Masud Rana
+        </a>
+
+        <nav aria-label="Primary" class="hidden items-center gap-1 md:flex">
+          <a
+            class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+            href="#home"
+            >Home</a
+          >
+          <a
+            class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+            href="#about"
+            >About</a
+          >
+          <a
+            class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+            href="#skills"
+            >Skills</a
+          >
+          <a
+            class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+            href="#experience"
+            >Experience</a
+          >
+          <a
+            class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="nav-link rounded-md px-3 py-2 text-sm font-medium"
+            href="#contact"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="grid h-10 w-10 place-items-center rounded-lg border border-line bg-surface text-ink transition hover:border-primary/50"
+            aria-label="Toggle light and dark theme"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
             >
-              Masud Rana builds fast web apps that stay simple to maintain.
-            </h1>
-            <p class="mt-6 max-w-[60ch] text-lg text-muted">
-              I work with Python, HTMX, HTML and CSS to ship server-rendered
-              products, and with Excel when the data lives in spreadsheets.
-            </p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#work"
-                class="rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-accent-fg hover:opacity-90"
-                >See my work</a
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" />
+            </svg>
+          </button>
+          <button
+            id="menu-toggle"
+            type="button"
+            class="grid h-10 w-10 place-items-center rounded-lg border border-line bg-surface text-ink md:hidden"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Open menu"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile navigation -->
+      <nav
+        id="mobile-menu"
+        aria-label="Mobile"
+        hidden
+        class="border-t border-line bg-bg md:hidden"
+      >
+        <div class="wrap flex flex-col gap-1 py-3">
+          <a class="nav-link rounded-md px-3 py-2.5 font-medium" href="#home"
+            >Home</a
+          >
+          <a class="nav-link rounded-md px-3 py-2.5 font-medium" href="#about"
+            >About</a
+          >
+          <a class="nav-link rounded-md px-3 py-2.5 font-medium" href="#skills"
+            >Skills</a
+          >
+          <a
+            class="nav-link rounded-md px-3 py-2.5 font-medium"
+            href="#experience"
+            >Experience</a
+          >
+          <a
+            class="nav-link rounded-md px-3 py-2.5 font-medium"
+            href="#projects"
+            >Projects</a
+          >
+          <a class="nav-link rounded-md px-3 py-2.5 font-medium" href="#contact"
+            >Contact</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ============ B. HERO ============ -->
+      <section id="home" class="relative overflow-hidden">
+        <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
+        <div
+          class="pointer-events-none absolute -right-24 top-10 h-80 w-80 rounded-full bg-primary/15 blur-3xl"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-accent/15 blur-3xl"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="wrap relative grid items-center gap-14 py-16 md:py-24 lg:grid-cols-[1.1fr_.9fr] lg:gap-10"
+        >
+          <div class="rise min-w-0">
+            <!-- Formula bar: the hero's signature detail -->
+            <div
+              class="mb-7 flex max-w-full items-stretch overflow-hidden rounded-md border border-line bg-surface font-mono text-xs shadow-sm sm:inline-flex"
+              aria-hidden="true"
+            >
+              <span
+                class="border-r border-line bg-surface2 px-2.5 py-1.5 text-muted"
+                >B2</span
               >
+              <span class="px-2.5 py-1.5 italic text-primary">fx</span>
+              <span class="min-w-0 truncate py-1.5 pr-3 text-ink"
+                >=Engineer(years: 7, stack: "Python, HTMX, Excel")</span
+              >
+            </div>
+
+            <p
+              class="font-display text-lg font-semibold text-accent sm:text-xl"
+            >
+              Hi, I'm Masud Rana
+            </p>
+            <h1
+              class="mt-2 font-display text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
+            >
+              Senior <span class="text-primary">Software Engineer</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-lg text-muted">
+              I bring 7+ years of software development experience to every
+              project, building efficient, practical software from backend
+              automation to fast, clean web interfaces. My everyday toolkit is
+              Python, HTML, CSS, HTMX, and Excel.
+            </p>
+
+            <div class="mt-9 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-onprimary shadow-lg shadow-primary/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30"
+              >
+                View My Projects
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
               <a
                 href="#contact"
-                class="rounded-md border border-line bg-surface px-5 py-2.5 text-sm font-medium hover:border-accent"
-                >Get in touch</a
+                class="inline-flex items-center rounded-lg border border-line bg-surface px-6 py-3 font-semibold text-ink transition hover:-translate-y-0.5 hover:border-primary/50"
+                >Contact Me</a
               >
             </div>
-          </div>
 
-          <div class="min-w-0 rounded-md border border-line bg-surface">
-            <div
-              class="flex items-center justify-between border-b border-line px-4 py-2"
+            <ul
+              class="mt-10 flex flex-wrap gap-2 font-mono text-xs text-muted"
+              aria-label="Core technologies"
             >
-              <span class="label">projects.html</span>
-              <span class="label">htmx</span>
-            </div>
-            <pre
-              class="overflow-x-auto p-4 font-mono text-[13px] leading-6"
-            ><code><span class="t-tag">&lt;button</span>
-  <span class="t-attr">hx-get</span>=<span class="t-str">"/projects?stack=python"</span>
-  <span class="t-attr">hx-target</span>=<span class="t-str">"#project-list"</span>
-  <span class="t-attr">hx-swap</span>=<span class="t-str">"innerHTML"</span><span class="t-tag">&gt;</span>
-  Show Python projects
-<span class="t-tag">&lt;/button&gt;</span>
-
-<span class="t-tag">&lt;ul</span> <span class="t-attr">id</span>=<span class="t-str">"project-list"</span><span class="t-tag">&gt;</span>
-  <span class="text-muted">&lt;!-- swapped in by the server --&gt;</span>
-<span class="t-tag">&lt;/ul&gt;</span></code></pre>
-          </div>
-        </section>
-
-        <!-- About -->
-        <section
-          id="about"
-          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
-        >
-          <h2 class="label pt-1">About</h2>
-          <div class="min-w-0 max-w-[65ch] space-y-4">
-            <p>
-              I am a senior software engineer with seven years of hands-on
-              experience. I like tools that are easy to read six months later:
-              plain HTML, a small amount of CSS, and Python on the server doing
-              the real work.
-            </p>
-            <p>
-              HTMX lets me add interactivity without a heavy front-end build,
-              and Tailwind keeps styling close to the markup. When a team still
-              runs on Excel, I build around it instead of fighting it.
-            </p>
-          </div>
-        </section>
-
-        <!-- Skills -->
-        <section
-          id="skills"
-          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
-        >
-          <h2 class="label pt-1">Skills</h2>
-          <div class="min-w-0 overflow-x-auto">
-            <table class="w-full min-w-[480px] border-collapse text-left">
-              <thead>
-                <tr class="border-b border-line">
-                  <th class="label py-2 pr-4 font-normal">Tool</th>
-                  <th class="label py-2 font-normal">What I use it for</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-line">
-                <tr>
-                  <td class="py-3 pr-4 font-mono text-sm font-medium">
-                    Python
-                  </td>
-                  <td class="py-3 text-muted">
-                    Backends, automation, data processing
-                  </td>
-                </tr>
-                <tr>
-                  <td class="py-3 pr-4 font-mono text-sm font-medium">HTMX</td>
-                  <td class="py-3 text-muted">
-                    Partial page updates and forms without a SPA
-                  </td>
-                </tr>
-                <tr>
-                  <td class="py-3 pr-4 font-mono text-sm font-medium">HTML</td>
-                  <td class="py-3 text-muted">
-                    Semantic, accessible page structure
-                  </td>
-                </tr>
-                <tr>
-                  <td class="py-3 pr-4 font-mono text-sm font-medium">
-                    CSS / Tailwind
-                  </td>
-                  <td class="py-3 text-muted">
-                    Responsive layouts and design systems
-                  </td>
-                </tr>
-                <tr>
-                  <td class="py-3 pr-4 font-mono text-sm font-medium">Excel</td>
-                  <td class="py-3 text-muted">
-                    Reports, formulas, and import/export workflows
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- Work: replace these sample entries with real projects -->
-        <section
-          id="work"
-          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
-        >
-          <h2 class="label pt-1">Selected work</h2>
-          <div class="min-w-0">
-            <p class="mb-5 font-mono text-xs text-muted">
-              Sample entries. Replace them with your own projects.
-            </p>
-            <ul class="grid gap-4 sm:grid-cols-2">
-              <li
-                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
-              >
-                <h3 class="font-display text-xl font-bold tracking-tight">
-                  Inventory Dashboard
-                </h3>
-                <p class="text-muted">
-                  Server-rendered stock tracking with live table filters, built
-                  with Python and HTMX.
-                </p>
-                <p class="mt-auto font-mono text-xs text-muted">
-                  Python · HTMX · Tailwind
-                </p>
+              <li class="rounded-md border border-line bg-surface px-2.5 py-1">
+                Python
               </li>
-              <li
-                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
-              >
-                <h3 class="font-display text-xl font-bold tracking-tight">
-                  Excel Report Automation
-                </h3>
-                <p class="text-muted">
-                  Turns weekly spreadsheets into formatted reports and sends
-                  them on a schedule.
-                </p>
-                <p class="mt-auto font-mono text-xs text-muted">
-                  Python · Excel
-                </p>
+              <li class="rounded-md border border-line bg-surface px-2.5 py-1">
+                HTML5
               </li>
-              <li
-                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
-              >
-                <h3 class="font-display text-xl font-bold tracking-tight">
-                  Booking Form
-                </h3>
-                <p class="text-muted">
-                  Inline validation and instant confirmation using HTMX swaps,
-                  no page reloads.
-                </p>
-                <p class="mt-auto font-mono text-xs text-muted">
-                  HTMX · HTML · CSS
-                </p>
+              <li class="rounded-md border border-line bg-surface px-2.5 py-1">
+                CSS3
               </li>
-              <li
-                class="flex flex-col gap-3 rounded-md border border-line bg-surface p-5"
-              >
-                <h3 class="font-display text-xl font-bold tracking-tight">
-                  Component Library
-                </h3>
-                <p class="text-muted">
-                  A small set of reusable Tailwind components shared across
-                  internal tools.
-                </p>
-                <p class="mt-auto font-mono text-xs text-muted">
-                  Tailwind · HTML
-                </p>
+              <li class="rounded-md border border-line bg-surface px-2.5 py-1">
+                Tailwind CSS
+              </li>
+              <li class="rounded-md border border-line bg-surface px-2.5 py-1">
+                HTMX
+              </li>
+              <li class="rounded-md border border-line bg-surface px-2.5 py-1">
+                Excel
               </li>
             </ul>
           </div>
-        </section>
 
-        <!-- Contact -->
-        <section
-          id="contact"
-          class="grid gap-6 border-t border-line py-12 md:grid-cols-[200px_1fr]"
-        >
-          <h2 class="label pt-1">Contact</h2>
-          <div class="min-w-0 max-w-[65ch]">
-            <p class="text-lg">
-              Have a project or a role in mind? Send me a message.
-            </p>
-            <div class="mt-5 flex flex-wrap items-center gap-3">
-              <span
-                id="email"
-                class="rounded-md border border-line bg-surface px-4 py-2.5 font-mono text-sm"
-                >your-email@example.com</span
-              >
-              <button
-                id="copy-email"
-                type="button"
-                class="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-accent-fg hover:opacity-90"
-              >
-                Copy email
-              </button>
-              <span
-                id="copy-status"
-                class="text-sm text-muted"
-                role="status"
-              ></span>
+          <!-- Profile image placeholder: swap the src for your photo, e.g. src="images/masud.jpg" -->
+          <div class="relative mx-auto w-full max-w-sm min-w-0">
+            <div
+              class="overflow-hidden rounded-2xl border border-line bg-surface p-2 shadow-2xl shadow-primary/10"
+            >
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233949D6'/%3E%3Cstop offset='1' stop-color='%230E7490'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='500' fill='url(%23g)'/%3E%3Ccircle cx='200' cy='190' r='72' fill='%23ffffff' fill-opacity='.85'/%3E%3Cpath d='M60 500c0-92 62-150 140-150s140 58 140 150z' fill='%23ffffff' fill-opacity='.85'/%3E%3C/svg%3E"
+                alt="Portrait placeholder for Masud Rana"
+                width="400"
+                height="500"
+                class="aspect-[4/5] w-full rounded-xl object-cover"
+              />
             </div>
-            <p class="mt-3 font-mono text-xs text-muted">
-              Replace the address above with your own.
+
+            <!-- Floating code card (shows the HTMX flavor of the site) -->
+            <div
+              class="bob absolute bottom-10 left-2 max-w-[78%] rounded-lg border border-line bg-surface/95 p-3 font-mono text-[11px] leading-5 shadow-xl backdrop-blur sm:-left-8"
+              aria-hidden="true"
+            >
+              <div class="text-muted">&lt;button</div>
+              <div class="pl-3">
+                <span class="text-accent">hx-get</span>=<span
+                  class="text-primary"
+                  >"/projects"</span
+                >
+              </div>
+              <div class="pl-3">
+                <span class="text-accent">hx-target</span>=<span
+                  class="text-primary"
+                  >"#work"</span
+                >&gt;
+              </div>
+            </div>
+
+            <!-- Experience badge -->
+            <div
+              class="bob-slow absolute right-2 top-8 rounded-lg border border-line bg-surface/95 px-4 py-3 text-center shadow-xl backdrop-blur sm:-right-6"
+              aria-hidden="true"
+            >
+              <div
+                class="font-display text-3xl font-extrabold leading-none text-primary"
+              >
+                7+
+              </div>
+              <div
+                class="mt-1 text-[11px] font-medium uppercase tracking-wider text-muted"
+              >
+                Years
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ C. ABOUT ============ -->
+      <section id="about" class="py-20 md:py-28">
+        <div class="wrap grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+          <div class="min-w-0">
+            <p
+              class="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent"
+            >
+              About
+            </p>
+            <h2
+              class="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
+            >
+              Software that is practical, fast, and built to last.
+            </h2>
+            <div class="mt-6 max-w-xl space-y-4 text-muted">
+              <p>
+                I'm Masud Rana, a Senior Software Engineer with more than seven
+                years of experience turning everyday problems into dependable
+                software. I enjoy work that makes people's days easier:
+                automating repetitive tasks, connecting data, and shipping web
+                interfaces that feel quick and clear.
+              </p>
+              <p>
+                My work spans web technologies and automation, with a steady
+                focus on clean, maintainable code that scales as requirements
+                change. I reach for simple, well-understood tools first: Python
+                on the backend, semantic HTML and Tailwind CSS on the front,
+                HTMX for interactivity, and Excel where it is the right tool for
+                the data.
+              </p>
+            </div>
+            <ul
+              class="mt-7 flex flex-wrap gap-2 text-sm"
+              aria-label="Professional focus"
+            >
+              <li
+                class="rounded-full border border-line bg-surface px-3.5 py-1.5"
+              >
+                Software Development
+              </li>
+              <li
+                class="rounded-full border border-line bg-surface px-3.5 py-1.5"
+              >
+                Web Development
+              </li>
+              <li
+                class="rounded-full border border-line bg-surface px-3.5 py-1.5"
+              >
+                Frontend
+              </li>
+              <li
+                class="rounded-full border border-line bg-surface px-3.5 py-1.5"
+              >
+                Backend
+              </li>
+              <li
+                class="rounded-full border border-line bg-surface px-3.5 py-1.5"
+              >
+                Automation
+              </li>
+            </ul>
+          </div>
+
+          <div class="grid min-w-0 gap-4 sm:grid-cols-2">
+            <article class="card rounded-xl border border-line bg-surface p-6">
+              <svg
+                class="text-primary"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M13 2L3 14h8l-1 8 10-12h-8z" />
+              </svg>
+              <h3 class="mt-4 font-display text-lg font-bold">
+                Efficient by default
+              </h3>
+              <p class="mt-1.5 text-sm text-muted">
+                Practical solutions that do the job with the fewest moving
+                parts.
+              </p>
+            </article>
+            <article class="card rounded-xl border border-line bg-surface p-6">
+              <svg
+                class="text-primary"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path
+                  d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"
+                />
+              </svg>
+              <h3 class="mt-4 font-display text-lg font-bold">
+                Web and automation
+              </h3>
+              <p class="mt-1.5 text-sm text-muted">
+                From interfaces people use to scripts they never have to think
+                about.
+              </p>
+            </article>
+            <article class="card rounded-xl border border-line bg-surface p-6">
+              <svg
+                class="text-primary"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+              </svg>
+              <h3 class="mt-4 font-display text-lg font-bold">
+                Clean, maintainable code
+              </h3>
+              <p class="mt-1.5 text-sm text-muted">
+                Readable structure and clear naming so teammates can move fast.
+              </p>
+            </article>
+            <article class="card rounded-xl border border-line bg-surface p-6">
+              <svg
+                class="text-primary"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 20h18M6 20V10M12 20V4M18 20v-7" />
+              </svg>
+              <h3 class="mt-4 font-display text-lg font-bold">
+                Built to scale
+              </h3>
+              <p class="mt-1.5 text-sm text-muted">
+                Designs that stay simple as features, data, and teams grow.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ D. TECHNICAL SKILLS ============ -->
+      <section
+        id="skills"
+        class="border-y border-line bg-surface2/60 py-20 md:py-28"
+      >
+        <div class="wrap">
+          <div class="max-w-2xl">
+            <p
+              class="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent"
+            >
+              Skills
+            </p>
+            <h2
+              class="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
+            >
+              The toolkit I use every day.
+            </h2>
+            <p class="mt-4 text-muted">
+              A focused stack, chosen for clarity, speed, and long-term
+              maintainability.
             </p>
           </div>
-        </section>
-      </main>
 
-      <footer class="border-t border-line pt-6 text-sm text-muted">
-        © 2026 Masud Rana
-      </footer>
-    </div>
+          <div class="mt-12 grid gap-5 lg:grid-cols-3">
+            <!-- Programming -->
+            <article class="card rounded-xl border border-line bg-surface p-6">
+              <h3
+                class="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted"
+              >
+                Programming
+              </h3>
+              <div class="mt-5 flex items-start gap-4">
+                <span
+                  class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 17l6-6-6-6M12 19h8" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-display text-lg font-bold">Python</p>
+                  <p class="text-sm text-muted">
+                    Backend services, scripting, and automation.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Frontend (wider card) -->
+            <article
+              class="card rounded-xl border border-line bg-surface p-6 lg:col-span-2"
+            >
+              <h3
+                class="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted"
+              >
+                Frontend
+              </h3>
+              <div class="mt-5 grid gap-5 sm:grid-cols-3">
+                <div class="flex items-start gap-4 sm:block">
+                  <span
+                    class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                    </svg>
+                  </span>
+                  <div class="sm:mt-4">
+                    <p class="font-display text-lg font-bold">HTML5</p>
+                    <p class="text-sm text-muted">
+                      Semantic, accessible structure.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4 sm:block">
+                  <span
+                    class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 0 2 2 2 2 0 0 0-2 2v5a2 2 0 0 1-2 2h-1"
+                      />
+                    </svg>
+                  </span>
+                  <div class="sm:mt-4">
+                    <p class="font-display text-lg font-bold">CSS3</p>
+                    <p class="text-sm text-muted">
+                      Responsive layouts and modern styling.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4 sm:block">
+                  <span
+                    class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2"
+                      />
+                    </svg>
+                  </span>
+                  <div class="sm:mt-4">
+                    <p class="font-display text-lg font-bold">Tailwind CSS</p>
+                    <p class="text-sm text-muted">
+                      Utility-first, consistent design systems.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Dynamic web development -->
+            <article
+              class="card rounded-xl border border-line bg-surface p-6 lg:col-span-2"
+            >
+              <h3
+                class="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted"
+              >
+                Dynamic Web Development
+              </h3>
+              <div class="mt-5 flex items-start gap-4">
+                <span
+                  class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8z" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-display text-lg font-bold">HTMX</p>
+                  <p class="text-sm text-muted">
+                    Server-driven interactivity with minimal JavaScript: partial
+                    page updates, forms, and live components written as plain
+                    HTML attributes.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Productivity & data -->
+            <article class="card rounded-xl border border-line bg-surface p-6">
+              <h3
+                class="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted"
+              >
+                Productivity &amp; Data
+              </h3>
+              <div class="mt-5 flex items-start gap-4">
+                <span
+                  class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M3 9h18M3 15h18M9 3v18" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-display text-lg font-bold">Microsoft Excel</p>
+                  <p class="text-sm text-muted">
+                    Data analysis, reporting, and workflow automation.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ E. PROFESSIONAL EXPERIENCE ============ -->
+      <!-- EDIT ME: replace every dashed placeholder (class="ph") with real roles, companies, dates and achievements. -->
+      <section id="experience" class="py-20 md:py-28">
+        <div class="wrap grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-16">
+          <div class="min-w-0">
+            <p
+              class="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent"
+            >
+              Experience
+            </p>
+            <h2
+              class="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
+            >
+              Seven years of shipping software.
+            </h2>
+            <p
+              class="mt-6 font-display text-7xl font-extrabold leading-none tracking-tight text-primary"
+            >
+              7+
+            </p>
+            <p class="mt-2 text-muted">
+              years of professional experience in software development and
+              problem solving.
+            </p>
+          </div>
+
+          <ol class="min-w-0 space-y-12 border-l border-line">
+            <!-- Current role -->
+            <li class="relative pl-8">
+              <span
+                class="absolute -left-[6px] top-2 h-[11px] w-[11px] rounded-full bg-primary ring-4 ring-bg"
+                aria-hidden="true"
+              ></span>
+              <div class="card rounded-xl border border-line bg-surface p-6">
+                <div
+                  class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"
+                >
+                  <h3 class="font-display text-xl font-bold">
+                    Senior Software Engineer
+                  </h3>
+                  <p class="font-mono text-xs text-muted">
+                    <span class="ph">[Start year]</span> to Present
+                  </p>
+                </div>
+                <p class="mt-1 text-sm font-medium text-accent">
+                  <span class="ph">[Company name]</span>
+                </p>
+                <ul
+                  class="mt-4 list-disc space-y-2 pl-5 text-muted marker:text-primary"
+                >
+                  <li>
+                    Delivering software across web development, backend systems,
+                    and automation, with 7+ years of professional experience.
+                  </li>
+                  <li>
+                    Solving practical problems with clean, maintainable,
+                    scalable code.
+                  </li>
+                  <li>
+                    <span class="ph"
+                      >[Add a key responsibility or measurable
+                      achievement]</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- Previous role placeholder -->
+            <li class="relative pl-8">
+              <span
+                class="absolute -left-[6px] top-2 h-[11px] w-[11px] rounded-full border-2 border-primary bg-bg"
+                aria-hidden="true"
+              ></span>
+              <div class="card rounded-xl border border-line bg-surface p-6">
+                <div
+                  class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"
+                >
+                  <h3 class="font-display text-xl font-bold">
+                    <span class="ph">[Previous role title]</span>
+                  </h3>
+                  <p class="font-mono text-xs text-muted">
+                    <span class="ph">[Start year]</span> to
+                    <span class="ph">[End year]</span>
+                  </p>
+                </div>
+                <p class="mt-1 text-sm font-medium text-accent">
+                  <span class="ph">[Company name]</span>
+                </p>
+                <ul
+                  class="mt-4 list-disc space-y-2 pl-5 text-muted marker:text-primary"
+                >
+                  <li>
+                    <span class="ph"
+                      >[Describe what you built or improved]</span
+                    >
+                  </li>
+                  <li>
+                    <span class="ph"
+                      >[Add technologies used and the outcome]</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ F. FEATURED PROJECTS ============ -->
+      <!-- EDIT ME: swap titles, descriptions, tags, thumbnails and the two links on each card. -->
+      <section
+        id="projects"
+        class="border-t border-line bg-surface2/60 py-20 md:py-28"
+      >
+        <div class="wrap">
+          <div class="max-w-2xl">
+            <p
+              class="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent"
+            >
+              Projects
+            </p>
+            <h2
+              class="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
+            >
+              Featured work.
+            </h2>
+            <p class="mt-4 text-muted">
+              Placeholder projects, ready to be replaced with real ones. Each
+              card's "Project details" button loads its content with HTMX.
+            </p>
+          </div>
+
+          <div id="work" class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Project 1 -->
+            <article
+              class="card flex min-w-0 flex-col overflow-hidden rounded-xl border border-line bg-surface"
+            >
+              <svg
+                viewBox="0 0 320 200"
+                class="aspect-[16/10] w-full"
+                role="img"
+                aria-label="Terminal window illustration"
+              >
+                <rect width="320" height="200" class="f-surface2" />
+                <rect
+                  x="28"
+                  y="26"
+                  width="264"
+                  height="148"
+                  rx="8"
+                  class="f-surface"
+                />
+                <path
+                  d="M28 34a8 8 0 0 1 8-8h248a8 8 0 0 1 8 8v14H28z"
+                  class="f-line"
+                />
+                <circle cx="44" cy="37" r="4" class="f-muted" />
+                <circle cx="58" cy="37" r="4" class="f-muted" />
+                <circle cx="72" cy="37" r="4" class="f-muted" />
+                <rect
+                  x="46"
+                  y="66"
+                  width="10"
+                  height="8"
+                  rx="2"
+                  class="f-accent"
+                />
+                <rect
+                  x="64"
+                  y="66"
+                  width="120"
+                  height="8"
+                  rx="3"
+                  class="f-primary"
+                />
+                <rect
+                  x="46"
+                  y="88"
+                  width="170"
+                  height="8"
+                  rx="3"
+                  class="f-line"
+                />
+                <rect
+                  x="46"
+                  y="106"
+                  width="136"
+                  height="8"
+                  rx="3"
+                  class="f-line"
+                />
+                <rect
+                  x="46"
+                  y="124"
+                  width="196"
+                  height="8"
+                  rx="3"
+                  class="f-line"
+                />
+                <rect
+                  x="46"
+                  y="148"
+                  width="10"
+                  height="8"
+                  rx="2"
+                  class="f-accent"
+                />
+                <rect
+                  x="64"
+                  y="148"
+                  width="34"
+                  height="8"
+                  rx="3"
+                  class="f-muted"
+                />
+              </svg>
+              <div class="flex flex-1 flex-col p-6">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-display text-xl font-bold">
+                    Workflow Automation Toolkit
+                  </h3>
+                  <span
+                    class="ph shrink-0 text-[10px] font-medium uppercase tracking-wider"
+                    >Placeholder</span
+                  >
+                </div>
+                <p class="mt-2 text-sm text-muted">
+                  A short description of what this project does and the problem
+                  it solves. Replace with your own project summary.
+                </p>
+                <ul
+                  class="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted"
+                  aria-label="Technologies used"
+                >
+                  <li class="rounded border border-line px-2 py-0.5">Python</li>
+                  <li class="rounded border border-line px-2 py-0.5">Excel</li>
+                </ul>
+                <div
+                  id="details-1"
+                  class="mt-4 empty:hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 text-sm font-semibold"
+                >
+                  <a
+                    href="#"
+                    class="text-primary underline-offset-4 hover:underline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary underline-offset-4 hover:underline"
+                    >Source Code</a
+                  >
+                  <button
+                    type="button"
+                    class="ml-auto font-medium text-muted underline-offset-4 hover:text-ink hover:underline"
+                    hx-get="/projects/1/details"
+                    hx-target="#details-1"
+                    hx-swap="innerHTML"
+                    data-demo-response="#tpl-details"
+                    data-demo-hide
+                  >
+                    Project details
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article
+              class="card flex min-w-0 flex-col overflow-hidden rounded-xl border border-line bg-surface"
+            >
+              <svg
+                viewBox="0 0 320 200"
+                class="aspect-[16/10] w-full"
+                role="img"
+                aria-label="Dashboard illustration"
+              >
+                <rect width="320" height="200" class="f-surface2" />
+                <rect
+                  x="24"
+                  y="22"
+                  width="272"
+                  height="156"
+                  rx="8"
+                  class="f-surface"
+                />
+                <path
+                  d="M24 30a8 8 0 0 1 8-8h256a8 8 0 0 1 8 8v12H24z"
+                  class="f-line"
+                />
+                <rect
+                  x="40"
+                  y="29"
+                  width="90"
+                  height="6"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="40"
+                  y="56"
+                  width="76"
+                  height="46"
+                  rx="6"
+                  class="f-line"
+                />
+                <rect
+                  x="122"
+                  y="56"
+                  width="76"
+                  height="46"
+                  rx="6"
+                  class="f-line"
+                />
+                <rect
+                  x="204"
+                  y="56"
+                  width="76"
+                  height="46"
+                  rx="6"
+                  class="f-primary"
+                />
+                <rect
+                  x="50"
+                  y="66"
+                  width="30"
+                  height="6"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="50"
+                  y="80"
+                  width="46"
+                  height="12"
+                  rx="3"
+                  class="f-accent"
+                />
+                <rect
+                  x="132"
+                  y="66"
+                  width="30"
+                  height="6"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="132"
+                  y="80"
+                  width="40"
+                  height="12"
+                  rx="3"
+                  class="f-primary"
+                />
+                <rect
+                  x="40"
+                  y="114"
+                  width="240"
+                  height="52"
+                  rx="6"
+                  class="f-line"
+                />
+                <rect
+                  x="52"
+                  y="146"
+                  width="14"
+                  height="14"
+                  rx="2"
+                  class="f-primary"
+                />
+                <rect
+                  x="74"
+                  y="136"
+                  width="14"
+                  height="24"
+                  rx="2"
+                  class="f-primary"
+                />
+                <rect
+                  x="96"
+                  y="140"
+                  width="14"
+                  height="20"
+                  rx="2"
+                  class="f-accent"
+                />
+                <rect
+                  x="118"
+                  y="126"
+                  width="14"
+                  height="34"
+                  rx="2"
+                  class="f-primary"
+                />
+                <rect
+                  x="140"
+                  y="132"
+                  width="14"
+                  height="28"
+                  rx="2"
+                  class="f-accent"
+                />
+                <rect
+                  x="162"
+                  y="122"
+                  width="14"
+                  height="38"
+                  rx="2"
+                  class="f-primary"
+                />
+              </svg>
+              <div class="flex flex-1 flex-col p-6">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-display text-xl font-bold">
+                    Interactive Web Dashboard
+                  </h3>
+                  <span
+                    class="ph shrink-0 text-[10px] font-medium uppercase tracking-wider"
+                    >Placeholder</span
+                  >
+                </div>
+                <p class="mt-2 text-sm text-muted">
+                  A short description of what this project does and the problem
+                  it solves. Replace with your own project summary.
+                </p>
+                <ul
+                  class="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted"
+                  aria-label="Technologies used"
+                >
+                  <li class="rounded border border-line px-2 py-0.5">HTMX</li>
+                  <li class="rounded border border-line px-2 py-0.5">
+                    Tailwind CSS
+                  </li>
+                  <li class="rounded border border-line px-2 py-0.5">Python</li>
+                </ul>
+                <div
+                  id="details-2"
+                  class="mt-4 empty:hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 text-sm font-semibold"
+                >
+                  <a
+                    href="#"
+                    class="text-primary underline-offset-4 hover:underline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary underline-offset-4 hover:underline"
+                    >Source Code</a
+                  >
+                  <button
+                    type="button"
+                    class="ml-auto font-medium text-muted underline-offset-4 hover:text-ink hover:underline"
+                    hx-get="/projects/2/details"
+                    hx-target="#details-2"
+                    hx-swap="innerHTML"
+                    data-demo-response="#tpl-details"
+                    data-demo-hide
+                  >
+                    Project details
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article
+              class="card flex min-w-0 flex-col overflow-hidden rounded-xl border border-line bg-surface md:col-span-2 lg:col-span-1"
+            >
+              <svg
+                viewBox="0 0 320 200"
+                class="aspect-[16/10] w-full"
+                role="img"
+                aria-label="Spreadsheet illustration"
+              >
+                <rect width="320" height="200" class="f-surface2" />
+                <rect
+                  x="24"
+                  y="22"
+                  width="272"
+                  height="156"
+                  rx="8"
+                  class="f-surface"
+                />
+                <rect
+                  x="24"
+                  y="22"
+                  width="272"
+                  height="20"
+                  rx="8"
+                  class="f-line"
+                />
+                <g class="s-line" stroke-width="1" fill="none">
+                  <path
+                    d="M24 64h272M24 86h272M24 108h272M24 130h272M24 152h272"
+                  />
+                  <path d="M70 42v136M130 42v136M190 42v136M250 42v136" />
+                </g>
+                <rect
+                  x="131"
+                  y="87"
+                  width="58"
+                  height="20"
+                  class="f-primary"
+                  opacity=".22"
+                />
+                <rect
+                  x="131"
+                  y="87"
+                  width="58"
+                  height="20"
+                  fill="none"
+                  stroke-width="2"
+                  style="stroke: rgb(var(--primary))"
+                />
+                <rect x="186" y="104" width="6" height="6" class="f-primary" />
+                <rect
+                  x="80"
+                  y="70"
+                  width="38"
+                  height="8"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="140"
+                  y="70"
+                  width="30"
+                  height="8"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="200"
+                  y="70"
+                  width="40"
+                  height="8"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="80"
+                  y="114"
+                  width="30"
+                  height="8"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="200"
+                  y="114"
+                  width="36"
+                  height="8"
+                  rx="3"
+                  class="f-accent"
+                />
+                <rect
+                  x="140"
+                  y="136"
+                  width="44"
+                  height="8"
+                  rx="3"
+                  class="f-muted"
+                />
+                <rect
+                  x="80"
+                  y="158"
+                  width="38"
+                  height="8"
+                  rx="3"
+                  class="f-muted"
+                />
+              </svg>
+              <div class="flex flex-1 flex-col p-6">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="font-display text-xl font-bold">
+                    Data Reporting Pipeline
+                  </h3>
+                  <span
+                    class="ph shrink-0 text-[10px] font-medium uppercase tracking-wider"
+                    >Placeholder</span
+                  >
+                </div>
+                <p class="mt-2 text-sm text-muted">
+                  A short description of what this project does and the problem
+                  it solves. Replace with your own project summary.
+                </p>
+                <ul
+                  class="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px] text-muted"
+                  aria-label="Technologies used"
+                >
+                  <li class="rounded border border-line px-2 py-0.5">Python</li>
+                  <li class="rounded border border-line px-2 py-0.5">Excel</li>
+                </ul>
+                <div
+                  id="details-3"
+                  class="mt-4 empty:hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 text-sm font-semibold"
+                >
+                  <a
+                    href="#"
+                    class="text-primary underline-offset-4 hover:underline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary underline-offset-4 hover:underline"
+                    >Source Code</a
+                  >
+                  <button
+                    type="button"
+                    class="ml-auto font-medium text-muted underline-offset-4 hover:text-ink hover:underline"
+                    hx-get="/projects/3/details"
+                    hx-target="#details-3"
+                    hx-swap="innerHTML"
+                    data-demo-response="#tpl-details"
+                    data-demo-hide
+                  >
+                    Project details
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ G. CONTACT ============ -->
+      <section id="contact" class="py-20 md:py-28">
+        <div class="wrap grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+          <div class="min-w-0">
+            <p
+              class="font-mono text-xs font-medium uppercase tracking-[0.18em] text-accent"
+            >
+              Contact
+            </p>
+            <h2
+              class="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl"
+            >
+              Let's build something useful together.
+            </h2>
+            <p class="mt-4 max-w-md text-muted">
+              Have a project, an automation idea, or a role in mind? Send a
+              message and I'll get back to you.
+            </p>
+
+            <!-- EDIT ME: replace the placeholder addresses and handles -->
+            <ul class="mt-8 space-y-3">
+              <li
+                class="flex items-center gap-4 rounded-xl border border-line bg-surface p-4"
+              >
+                <span
+                  class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="M3 7l9 6 9-6" />
+                  </svg>
+                </span>
+                <div class="min-w-0">
+                  <p
+                    class="text-xs font-medium uppercase tracking-wider text-muted"
+                  >
+                    Email
+                  </p>
+                  <p class="break-all font-medium">
+                    <span class="ph">your.name@example.com</span>
+                  </p>
+                </div>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="card flex items-center gap-4 rounded-xl border border-line bg-surface p-4"
+                >
+                  <span
+                    class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="3" />
+                      <path
+                        d="M8 11v5M8 8v.01M12 16v-5M12 13a2.5 2.5 0 0 1 5 0v3"
+                      />
+                    </svg>
+                  </span>
+                  <div class="min-w-0">
+                    <p
+                      class="text-xs font-medium uppercase tracking-wider text-muted"
+                    >
+                      LinkedIn
+                    </p>
+                    <p class="break-all font-medium">
+                      <span class="ph">linkedin.com/in/your-handle</span>
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="card flex items-center gap-4 rounded-xl border border-line bg-surface p-4"
+                >
+                  <span
+                    class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                    </svg>
+                  </span>
+                  <div class="min-w-0">
+                    <p
+                      class="text-xs font-medium uppercase tracking-wider text-muted"
+                    >
+                      GitHub
+                    </p>
+                    <p class="break-all font-medium">
+                      <span class="ph">github.com/your-handle</span>
+                    </p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!--
+        HTMX contact form. In production, point hx-post at your backend and delete the
+        data-demo-response attribute plus the "Preview mode" script at the bottom of this file.
+      -->
+          <form
+            id="contact-form"
+            class="min-w-0 rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8"
+            hx-post="/api/contact"
+            hx-target="#form-status"
+            hx-swap="innerHTML"
+            data-demo-response="#tpl-contact-ok"
+          >
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="c-name" class="mb-1.5 block text-sm font-medium"
+                  >Name</label
+                >
+                <input
+                  id="c-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  class="w-full rounded-lg border border-line bg-bg px-3.5 py-2.5 text-ink placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label for="c-email" class="mb-1.5 block text-sm font-medium"
+                  >Email</label
+                >
+                <input
+                  id="c-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  class="w-full rounded-lg border border-line bg-bg px-3.5 py-2.5 text-ink placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  placeholder="you@company.com"
+                />
+              </div>
+            </div>
+            <div class="mt-5">
+              <label for="c-subject" class="mb-1.5 block text-sm font-medium"
+                >Subject</label
+              >
+              <input
+                id="c-subject"
+                name="subject"
+                type="text"
+                required
+                class="w-full rounded-lg border border-line bg-bg px-3.5 py-2.5 text-ink placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                placeholder="What is this about?"
+              />
+            </div>
+            <div class="mt-5">
+              <label for="c-message" class="mb-1.5 block text-sm font-medium"
+                >Message</label
+              >
+              <textarea
+                id="c-message"
+                name="message"
+                rows="5"
+                required
+                class="w-full resize-y rounded-lg border border-line bg-bg px-3.5 py-2.5 text-ink placeholder:text-muted/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                placeholder="Tell me about your project or idea"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-onprimary shadow-lg shadow-primary/25 transition hover:-translate-y-0.5 sm:w-auto"
+            >
+              Send Message
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4z" />
+              </svg>
+            </button>
+            <div
+              id="form-status"
+              role="status"
+              aria-live="polite"
+              class="mt-5 empty:hidden"
+            ></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ H. FOOTER ============ -->
+    <footer class="border-t border-line bg-surface2/60">
+      <div class="wrap grid gap-10 py-12 md:grid-cols-[1.3fr_1fr_1fr]">
+        <div>
+          <a
+            href="#home"
+            class="flex items-center gap-2.5 font-display text-lg font-extrabold tracking-tight"
+          >
+            <span
+              class="grid h-8 w-8 place-items-center rounded-md bg-primary font-mono text-xs font-medium text-onprimary"
+              aria-hidden="true"
+              >MR</span
+            >
+            Masud Rana
+          </a>
+          <p class="mt-3 max-w-xs text-sm text-muted">
+            Senior Software Engineer with 7+ years of experience in web
+            development and automation.
+          </p>
+        </div>
+        <nav aria-label="Footer">
+          <h2
+            class="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted"
+          >
+            Quick links
+          </h2>
+          <ul class="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+            <li><a class="hover:text-primary" href="#home">Home</a></li>
+            <li><a class="hover:text-primary" href="#about">About</a></li>
+            <li><a class="hover:text-primary" href="#skills">Skills</a></li>
+            <li>
+              <a class="hover:text-primary" href="#experience">Experience</a>
+            </li>
+            <li><a class="hover:text-primary" href="#projects">Projects</a></li>
+            <li><a class="hover:text-primary" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2
+            class="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted"
+          >
+            Elsewhere
+          </h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a
+                class="hover:text-primary"
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                class="hover:text-primary"
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </li>
+            <li><a class="hover:text-primary" href="#contact">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-line">
+        <div class="wrap py-5 text-sm text-muted">
+          &copy; <span id="year">2026</span> Masud Rana. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- HTMX response fragments. In production these come from your server; here they stand in for it. -->
+    <template id="tpl-details">
+      <div class="rounded-lg border border-line bg-bg p-4 text-sm text-muted">
+        <p>
+          <span class="font-medium text-ink">Role:</span>
+          <span class="ph">[Your role on this project]</span>
+        </p>
+        <p class="mt-1">
+          <span class="font-medium text-ink">Outcome:</span>
+          <span class="ph">[What changed because of it]</span>
+        </p>
+      </div>
+    </template>
+    <template id="tpl-contact-ok">
+      <p
+        class="rounded-lg border border-accent/40 bg-accent/10 p-4 text-sm text-ink"
+      >
+        <strong>Preview only.</strong> This form is not connected to a backend
+        yet, so no message was sent. Point
+        <code class="font-mono text-xs">hx-post</code> at your endpoint to go
+        live.
+      </p>
+    </template>
 
     <script>
       (function () {
-        var btn = document.getElementById("copy-email");
-        var email = document.getElementById("email");
-        var status = document.getElementById("copy-status");
+        var root = document.documentElement;
+
+        /* Year in footer */
+        var y = document.getElementById("year");
+        if (y) y.textContent = new Date().getFullYear();
+
+        /* Theme toggle (light / dark). Follows the system until the visitor chooses. */
+        try {
+          var saved = localStorage.getItem("theme");
+          if (saved) root.setAttribute("data-theme", saved);
+        } catch (e) {}
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", function () {
+            var current =
+              root.getAttribute("data-theme") ||
+              (window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light");
+            var next = current === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", next);
+            try {
+              localStorage.setItem("theme", next);
+            } catch (e) {}
+          });
+
+        /* Mobile menu */
+        var btn = document.getElementById("menu-toggle");
+        var menu = document.getElementById("mobile-menu");
+        function setMenu(open) {
+          menu.hidden = !open;
+          btn.setAttribute("aria-expanded", String(open));
+          btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        }
         btn.addEventListener("click", function () {
-          var text = email.textContent;
-          function selectText() {
-            var range = document.createRange();
-            range.selectNodeContents(email);
-            var sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-            status.textContent = "Press Ctrl+C to copy";
-          }
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function () {
-              status.textContent = "Copied";
-            }, selectText);
-          } else {
-            selectText();
-          }
+          setMenu(menu.hidden);
+        });
+        menu.addEventListener("click", function (e) {
+          if (e.target.closest("a")) setMenu(false);
+        });
+
+        /* Highlight the nav link for the section in view */
+        var links = document.querySelectorAll(".nav-link");
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                links.forEach(function (a) {
+                  a.setAttribute(
+                    "aria-current",
+                    a.getAttribute("href") === "#" + en.target.id
+                      ? "true"
+                      : "false",
+                  );
+                });
+              });
+            },
+            { rootMargin: "-45% 0px -50% 0px" },
+          );
+          document.querySelectorAll("main section[id]").forEach(function (s) {
+            io.observe(s);
+          });
+        }
+
+        /* Preview mode: no server exists here, so answer HTMX requests from the <template> named in
+       data-demo-response. Delete this block (and the data-demo-* attributes) when you add real endpoints. */
+        document.addEventListener("htmx:beforeRequest", function (e) {
+          var el = e.detail.elt;
+          var src = el.getAttribute("data-demo-response");
+          if (!src) return;
+          e.preventDefault();
+          var tpl = document.querySelector(src);
+          var target = document.querySelector(el.getAttribute("hx-target"));
+          if (!tpl || !target) return;
+          target.innerHTML = tpl.innerHTML;
+          htmx.process(target);
+          if (el.hasAttribute("data-demo-hide")) el.hidden = true;
+          if (el.tagName === "FORM") el.reset();
         });
       })();
     </script>
